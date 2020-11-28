@@ -101,7 +101,6 @@ body {
     padding: 85px 0 0 0;
   }
   &__container {
-    padding: 0 0 20px 0;
     @media (min-width: $md2+px) {
       display: flex;
     }
@@ -118,6 +117,7 @@ body {
     margin: 0 0 40px 0;
   }
   &__content {
+    margin: 0 0 30px 0;
     @media (min-width: $md2+px) {
       flex: 1 1 auto;
       min-width: 0; //для корректного отображения слайдера
@@ -145,8 +145,13 @@ body {
   &__brands {
     margin: 0 0 32px 0;
   }
- &__text {
+  &__text {
+    margin: 0 0 38px 0;
   }
+  &__info-menu {
+    margin: 0 0 38px 0;
+  }
+
 }
 //========================================================== menu
 .menu-page {
@@ -353,7 +358,7 @@ body {
     flex: 0 1 33.333%;
     padding: 0 15px;
     margin: 0 0 30px 0;
-    @media (max-width: $md1+px) and (min-width: $md2+px){
+    @media (max-width: $md1+px) and (min-width: $md2+px) {
       flex: 0 1 50%;
     }
     @media (max-width: 840px) {
@@ -474,8 +479,8 @@ body {
         transform: translate(0%, 0px);
       }
       .item-product__title,
-      .item-product__footer{
-opacity: 0;
+      .item-product__footer {
+        opacity: 0;
       }
     }
   }
@@ -502,11 +507,10 @@ opacity: 0;
     }
   }
   &__options {
-   
   }
-  &__body{
- flex: 1 1 auto;
- padding: 10px 0 0 0;
+  &__body {
+    flex: 1 1 auto;
+    padding: 10px 0 0 0;
   }
   &__cart {
     background: url(../img/icons/cart-hover.png) 0 0 no-repeat;
@@ -840,6 +844,65 @@ opacity: 0;
 }
 
 .side-title {
+}
+//======================================================== .info-menu
+.info-menu {
+  border-top: 3px dashed #dadada;
+  border-bottom: 3px dashed #dadada;
+  padding: 10px 0;
+  &__container {
+  }
+  &__body {
+    display: inline-block;
+    @media (max-width: $md3+px) {
+      display: flex;
+    }
+  }
+  &__line {
+    display: flex;
+    padding: 15px;
+    align-items: center;
+    border-bottom: 1px solid #b0b0b0;
+    &:last-child {
+      border: 0;
+    }
+    @media (max-width: $md3+px) {
+      display: block;
+      flex: 0 1 50%;
+      border: 0;
+    }
+  }
+
+  &__label {
+    color: #333333;
+    font-weight: 900;
+    margin: 0 35px 0 0;
+    @media (max-width: $md3+px) {
+      margin: 0 0 10px 0;
+    }
+  }
+  &__list {
+    @media (min-width: $md3+px) {
+      display: flex;
+      align-items: center;
+    }
+    li {
+      margin: 0 30px 0 0;
+      @media (max-width: $md3+px) {
+        margin: 0 0 10px 0;
+      }
+    }
+  }
+  &__link {
+    color: #1ab9ce;
+    font-size: 12px;
+    font-weight: 300;
+    @media (min-width: $md2+px) {
+      &:hover {
+        color: #333333;
+      }
+    }
+  }
 }
 
 //===================================================================================================================================

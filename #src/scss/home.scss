@@ -238,33 +238,49 @@
 
 .text-block {
   &__container {
+    @media (max-width: $md2+px) {
+      padding: 0;
+    }
+    @media (max-width: $md3+px) {
+      padding: 0;
+    }
   }
   &__body {
-    padding: 45px 35px;
-    background: url(../img/bg-text.jpg) 0 0 no-repeat;
+    padding: 45px 35px 15px 35px;
+    background: url(../img/bg-text.jpg) 0 0 repeat;
+    background-size: cover;
+    @media (max-width: $md2+px) {
+      padding: 25px 20px 15px 20px;
+    }
   }
   &__title {
     color: #22b7ca;
-    font-family: 'uni';
+    font-family: "uni";
     font-size: 30px;
     text-transform: uppercase;
     letter-spacing: 0.75px;
     margin: 0 0 28px 0;
   }
   &__row {
-    display: flex;
-    margin: 0 -30px;
+    @media (min-width: $md2+px) {
+      display: flex;
+      margin: 0 -30px;
+    }
   }
   &__column {
     color: #fff;
-    padding: 0 30px;
-    flex: 0 1 50%;
-    p{
+    position: relative;
+    margin: 0 0 30px 0;
+    @media (min-width: $md2+px) {
+      padding: 0 30px;
+      flex: 0 1 50%;
+    }
+    p {
       font-size: 12px;
       line-height: 20px;
       letter-spacing: 0.3px;
       margin: 0 0 20px 0;
-      &:last-child{
+      &:last-child {
         margin: 0;
       }
     }
@@ -275,19 +291,35 @@
     margin: 0 0 5px 0;
   }
   &__list {
-    li{
+    li {
       font-size: 12px;
       line-height: 20px;
       letter-spacing: 0.3px;
-      &::before{
-content: '';
-// position: absolute;
-display: inline-block;
-width: 11px;
-height: 11px;
-background: url(../img/icons/li-arrow.png) left no-repeat;
+      margin: 0 0 5px 0;
+      &:last-child {
+        margin: 0 0 0 0;
+      }
+      &::before {
+        content: "";
+        margin: 0 17px 0 7px;
+        display: inline-block;
+        width: 11px;
+        height: 12px;
+        background: url(../img/icons/li-arrow.png) left no-repeat;
+      }
+      @media (max-width: $md1+px) {
+        br {
+          display: none;
+        }
       }
     }
   }
+  &__imge {
+    position: absolute;
+    right: -90px;
+    bottom: -260px;
+    @media (max-width: $md1+px) {
+      display: none;
+    }
+  }
 }
-

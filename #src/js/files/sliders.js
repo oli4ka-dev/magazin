@@ -154,7 +154,7 @@ if (document.querySelector('.products-slider')) {
 			nextEl: '.products-slider__arrow-next',
 			prevEl: '.products-slider__arrow-prev',
 		},
-	
+
 		on: {
 			// lazyImageReady: function () {
 			// 	ibg();
@@ -191,22 +191,22 @@ if (document.querySelector('.brands-slider')) {
 			},
 			480: {
 				slidesPerView: 2,
-			
+
 			},
 			600: {
 				slidesPerView: 3,
-			
+
 			},
 			768: {
 				slidesPerView: 4,
-			
+
 			},
 			992: {
 				slidesPerView: 5,
-			
+
 			},
 		},
-	
+
 		// And if we need scrollbar
 		//scrollbar: {
 		//	el: '.swiper-scrollbar',

@@ -1312,7 +1312,7 @@ if (document.querySelector('.products-slider')) {
 			nextEl: '.products-slider__arrow-next',
 			prevEl: '.products-slider__arrow-prev',
 		},
-	
+
 		on: {
 			// lazyImageReady: function () {
 			// 	ibg();
@@ -1349,83 +1349,27 @@ if (document.querySelector('.brands-slider')) {
 			},
 			480: {
 				slidesPerView: 2,
-			
+
 			},
 			600: {
 				slidesPerView: 3,
-			
+
 			},
 			768: {
 				slidesPerView: 4,
-			
+
 			},
 			992: {
 				slidesPerView: 5,
-			
+
 			},
 		},
-	
+
 		// And if we need scrollbar
 		//scrollbar: {
 		//	el: '.swiper-scrollbar',
 		//},
 	});
-}
-if (isMobile.any()) {
-    let menuParents = document.querySelectorAll('.menu-page__parent>a');
-    for (let index = 0; index < menuParents.length; index++) {
-        const menuParent = menuParents[index];
-        menuParent.addEventListener("click", function (e) {
-            menuParent.parentElement.classList.toggle('_active');
-            e.preventDefault();
-        });
-    }
-} else {
-    let menuParents = document.querySelectorAll('.menu-page__parent');
-    for (let index = 0; index < menuParents.length; index++) {
-        const menuParent = menuParents[index];
-        menuParent.addEventListener("mouseenter", function (e) {
-            menuParent.classList.add('_active');
-        });
-        menuParent.addEventListener("mouseleave", function (e) {
-            menuParent.classList.remove('_active');
-        });
-    }
-}
-
-let menuPageBurger = document.querySelector('.menu-page__burger');
-let menuPageBody = document.querySelector('.menu-page__body');
-menuPageBurger.addEventListener("click", function (e) {
-    menuPageBurger.classList.toggle('_active');
-    _slideToggle(menuPageBody);
-    // menuPageBody.classList.toggle('_active');
-});
-
-let searchSelect = document.querySelector('.search-page__title');
-let categoriesSearch = document.querySelector('.categories-search');
-
-searchSelect.addEventListener("click", function (e) {
-    searchSelect.classList.toggle('_active');
-    _slideToggle(categoriesSearch);
-});
-
-let checkboxCategories = document.querySelectorAll('.categories-search__checkbox');
-
-for (let index = 0; index < checkboxCategories.length; index++) {
-    const checkboxCategory = checkboxCategories[index];
-    checkboxCategory.addEventListener("change", function (e) {
-        checkboxCategory.classList.toggle('_active');
-
-        let checkboxActiveCategories = document.querySelectorAll('.categories-search__checkbox._active');
-
-        if (checkboxActiveCategories.length > 0) {
-            searchSelect.classList.add('_categories');
-            let searchQuantity = searchSelect.querySelector('.search-page__quantity');
-            searchQuantity.innerHTML = searchQuantity.getAttribute('data-text') + ' ' + checkboxActiveCategories.length;
-        } else {
-            searchSelect.classList.remove('_categories');
-        }
-    });
 }
 let scr_body = document.querySelector('body');
 let scr_blocks = document.querySelectorAll('._scr-sector');
@@ -1840,3 +1784,92 @@ function scroll_animate(event) {
 	//If native scroll
 	//disableScroll();
 }
+
+if (isMobile.any()) {
+    let menuParents = document.querySelectorAll('.menu-page__parent>a');
+    for (let index = 0; index < menuParents.length; index++) {
+        const menuParent = menuParents[index];
+        menuParent.addEventListener("click", function (e) {
+            menuParent.parentElement.classList.toggle('_active');
+            e.preventDefault();
+        });
+    }
+} else {
+    let menuParents = document.querySelectorAll('.menu-page__parent');
+    for (let index = 0; index < menuParents.length; index++) {
+        const menuParent = menuParents[index];
+        menuParent.addEventListener("mouseenter", function (e) {
+            menuParent.classList.add('_active');
+        });
+        menuParent.addEventListener("mouseleave", function (e) {
+            menuParent.classList.remove('_active');
+        });
+    }
+}
+
+let menuPageBurger = document.querySelector('.menu-page__burger');
+let menuPageBody = document.querySelector('.menu-page__body');
+menuPageBurger.addEventListener("click", function (e) {
+    menuPageBurger.classList.toggle('_active');
+    _slideToggle(menuPageBody);
+    // menuPageBody.classList.toggle('_active');
+});
+
+let searchSelect = document.querySelector('.search-page__title');
+let categoriesSearch = document.querySelector('.categories-search');
+
+searchSelect.addEventListener("click", function (e) {
+    searchSelect.classList.toggle('_active');
+    _slideToggle(categoriesSearch);
+});
+
+let checkboxCategories = document.querySelectorAll('.categories-search__checkbox');
+
+for (let index = 0; index < checkboxCategories.length; index++) {
+    const checkboxCategory = checkboxCategories[index];
+    checkboxCategory.addEventListener("change", function (e) {
+        checkboxCategory.classList.toggle('_active');
+
+        let checkboxActiveCategories = document.querySelectorAll('.categories-search__checkbox._active');
+
+        if (checkboxActiveCategories.length > 0) {
+            searchSelect.classList.add('_categories');
+            let searchQuantity = searchSelect.querySelector('.search-page__quantity');
+            searchQuantity.innerHTML = searchQuantity.getAttribute('data-text') + ' ' + checkboxActiveCategories.length;
+        } else {
+            searchSelect.classList.remove('_categories');
+        }
+    });
+}
+//============================================================  ползунок
+let priceslider = document.querySelector('.price-filter__slider');
+
+noUiSlider.create(priceslider, {
+    start: [0, 200000],
+    connect: true,
+    padding: [10, 15],
+    // tooltips: [true, true],
+    tooltips: [wNumb({decimals: 0}),wNumb({decimals: 0})],
+    range: {
+        'min': [0],
+        'max': [200000]
+    }
+});
+
+let priceStart = document.getElementById('price-start');
+let priceEnd = document.getElementById('price-end');
+priceStart.addEventListener('change', setPriceValues);
+priceEnd.addEventListener('change', setPriceValues);
+
+function setPriceValues(){
+let priceStartValue;
+let priceEndValue;
+    if (priceStart.value!=''){
+        let priceStartValue = priceStart.value;
+    }
+    if (priceEnd.value!=''){
+        let priceEndValue = priceEnd.value;
+    }
+
+priceslider.noUiSlider.set([priceStart.value, priceEnd.value]);
+};

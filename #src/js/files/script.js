@@ -54,3 +54,35 @@ for (let index = 0; index < checkboxCategories.length; index++) {
         }
     });
 }
+//============================================================  ползунок
+let priceslider = document.querySelector('.price-filter__slider');
+
+noUiSlider.create(priceslider, {
+    start: [0, 200000],
+    connect: true,
+    padding: [10, 15],
+    // tooltips: [true, true],
+    tooltips: [wNumb({decimals: 0}),wNumb({decimals: 0})],
+    range: {
+        'min': [0],
+        'max': [200000]
+    }
+});
+
+let priceStart = document.getElementById('price-start');
+let priceEnd = document.getElementById('price-end');
+priceStart.addEventListener('change', setPriceValues);
+priceEnd.addEventListener('change', setPriceValues);
+
+function setPriceValues(){
+let priceStartValue;
+let priceEndValue;
+    if (priceStart.value!=''){
+        let priceStartValue = priceStart.value;
+    }
+    if (priceEnd.value!=''){
+        let priceEndValue = priceEnd.value;
+    }
+
+priceslider.noUiSlider.set([priceStart.value, priceEnd.value]);
+};

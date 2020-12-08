@@ -1,19 +1,50 @@
 .pagging {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	// .pagging__arrow
-	&__arrow {
-	}
-	// .pagging__list
-	&__list {
-		display: flex;
-		li {
-		}
-	}
-	// .pagging__item
-	&__item {
-		&._active {
-		}
-	}
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // .pagging__arrow
+  &__arrow {
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    background: url(../img/icons/left-arrow-grey.svg) 0 0 / 100% no-repeat;
+    @media (min-width: $md2+px) {
+      &:hover {
+		background: url(../img/icons/r-arrow.svg) 0 0 / 100% no-repeat;
+		transform: rotate(0deg);
+      }
+    }
+    &:first-child {
+		@media (min-width: $md2+px) {
+			&:hover {
+			  transform: rotate(-180deg);
+			}
+		  }
+    }
+    &:last-child {
+      transform: rotate(-180deg);
+    }
+  }
+  // .pagging__list
+  &__list {
+    margin: 0 35px;
+    display: flex;
+    li {
+    }
+  }
+  // .pagging__item
+  &__item {
+    width: 33px;
+    height: 33px;
+    display: flex;
+    color: #333333;
+    font-weight: 900;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    &._active {
+      color: #615f5f;
+      background-color: #bad8df;
+    }
+  }
 }

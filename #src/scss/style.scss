@@ -35,7 +35,7 @@ $md4: 479.98;
 body {
   color: #000;
   font-size: 14px;
-  background-color: #615f5f;
+  // background-color: #615f5f;
   &._lock {
     overflow: hidden;
   }
@@ -83,13 +83,14 @@ body {
 //<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
 //@import "datepicker";
 //@import "lightgallery";
-//@import "pagging";
+@import "pagging";
 @import "nouislider";
 @import "popup";
 @import "header";
 @import "footer";
 @import "home";
 @import "catalog";
+@import "product";
 //</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
 
 //<ОСНОВНОЙ БЛОК>====================================================================================================
@@ -111,9 +112,7 @@ body {
     position: relative;
     z-index: 10;
     flex: 0 0 260px;
-    @media (max-width: $md2+px) {
-      margin: 0 0 30px 0;
-    }
+    margin: 0 0 30px 0;
   }
   &__menu {
     margin: 0 0 40px 0;
@@ -153,7 +152,38 @@ body {
   &__info-menu {
     margin: 0 0 38px 0;
   }
+}
+//==============================================================  .breadcrubs
+.breadcrubs {
+  overflow: auto;
+  margin: 0 0 20px 0;
+  height: 20px;
 
+  &__list {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    li {
+      padding: 0 20px 0 0;
+      margin: 0 10px 0 0;
+      background-image: url(../img/icons/li-arrow.png);
+      background-repeat: no-repeat;
+      background-position: right 0;
+      &:last-child {
+        margin: 0;
+        background: 0;
+        background-size: 0;
+      }
+    }
+  }
+  &__link {
+    color: #286664;
+    text-decoration: underline;
+  }
+  &__item {
+    color: #999999;
+    font-weight: 900;
+  }
 }
 //========================================================== menu
 .menu-page {

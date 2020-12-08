@@ -213,3 +213,36 @@ if (document.querySelector('.brands-slider')) {
 		//},
 	});
 }
+//============================================== .images-product__mainslider
+if (document.querySelector('.images-product')) {
+	let imagesSubSlider = new Swiper('.images-product__subslider', {
+		observer: true,
+		observeParents: true,
+		slidesPerView: 3,
+		spaceBetween: 0,
+		autoHeight: true,
+		speed: 800,
+		// loop: true,
+		//preloadImages: false,
+		//lazy: true,
+
+	});
+
+	let imagesMainSlider = new Swiper('.images-product__mainslider', {
+		observer: true,
+		observeParents: true,
+		slidesPerView: 1,
+		spaceBetween: 0,
+		autoHeight: true,
+		thumbs: {
+			swiper: imagesSubSlider
+		},
+		speed: 800,
+		// loop: true,
+		//preloadImages: false,
+		//lazy: true,
+	
+	});
+
+	
+}

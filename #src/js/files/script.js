@@ -55,34 +55,89 @@ for (let index = 0; index < checkboxCategories.length; index++) {
     });
 }
 //============================================================  ползунок
-let priceslider = document.querySelector('.price-filter__slider');
+// const priceSlider = document.querySelector('.price-filter__slider');
+// if (priceSlider) {
+// 	noUiSlider.create(priceSlider, {
+// 		start: [0, 200000],
+// 		connect: true,
+// 		tooltips: [wNumb({ decimals: 0 }), wNumb({ decimals: 0 })],
+// 		range: {
+// 			'min': [0],
+// 			'max': [200000]
+// 		}
+// 	});
 
-noUiSlider.create(priceslider, {
-    start: [0, 200000],
-    connect: true,
-    padding: [10, 15],
-    // tooltips: [true, true],
-    tooltips: [wNumb({decimals: 0}),wNumb({decimals: 0})],
-    range: {
-        'min': [0],
-        'max': [200000]
-    }
-});
+// 	const priceStart = document.getElementById('price-start');
+// 	const priceEnd = document.getElementById('price-end');
+// 	priceStart.addEventListener('change', setPriceValues);
+// 	priceEnd.addEventListener('change', setPriceValues);
 
-let priceStart = document.getElementById('price-start');
-let priceEnd = document.getElementById('price-end');
-priceStart.addEventListener('change', setPriceValues);
-priceEnd.addEventListener('change', setPriceValues);
+// 	function setPriceValues() {
+// 		let priceStartValue;
+// 		let priceEndValue;
+// 		if (priceStart.value!= '') {
+// 			priceStartValue = priceStart.value;
+// 		}
+// 		if (priceEnd.value!= '') {
+// 			priceEndValue = priceEnd.value;
+// 		}
+// 		priceSlider.noUiSlider.set([priceStartValue, priceEndValue]);
+// 	}
+// }
+// if (isMobile.any()) {
+// 	const filterTitle = document.querySelector('.filter__title');
+// 	if (filterTitle) {
+// 		filterTitle.addEventListener("click", function (e) {
+// 			filterTitle.classList.toggle('_active');
+// 			_slideToggle(filterTitle.nextElementSibling);
+// 		});
+// 	}
+// }
+//=======================================================
+// let priceslider = document.querySelector('.price-filter__slider');
 
-function setPriceValues(){
-let priceStartValue;
-let priceEndValue;
-    if (priceStart.value!=''){
-        let priceStartValue = priceStart.value;
-    }
-    if (priceEnd.value!=''){
-        let priceEndValue = priceEnd.value;
-    }
+// noUiSlider.create(priceslider, {
+//     start: [0, 200000],
+//     connect: true,
+//     // padding: [10, 15],
+//     // tooltips: [true, true],
+//     tooltips: [wNumb({
+//         decimals: 0
+//     }), wNumb({
+//         decimals: 0
+//     })],
+//     range: {
+//         'min': [0],
+//         'max': [200000]
+//     }
+// });
 
-priceslider.noUiSlider.set([priceStart.value, priceEnd.value]);
-};
+// let priceStart = document.getElementById('price-start');
+// let priceEnd = document.getElementById('price-end');
+// priceStart.addEventListener('change', setPriceValues);
+// priceEnd.addEventListener('change', setPriceValues);
+
+// function setPriceValues() {
+//     let priceStartValue;
+//     let priceEndValue;
+//     if (priceStart.value != '') {
+//         priceStartValue = priceStart.value;
+//     }
+//     if (priceEnd.value != '') {
+//         priceEndValue = priceEnd.value;
+//     }
+
+//     priceSlider.noUiSlider.set([priceStartValue, priceEndValue]);
+// }
+
+// if (isMobile.any()) {
+// 	let filterTitle = document.querySelector('.filter__title');
+// 	if (filterTitle) {
+// 		filterTitle.addEventListener("click", function (e) {
+// 			filterTitle.classList.toggle('_active');
+// 			_slideToggle(filterTitle.nextElementSibling);
+// 		});
+// 	}
+// }
+
+

@@ -308,6 +308,14 @@ textarea.input {
   position: relative;
 }
 
+.checkbox__input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
 .checkbox__text {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -1714,6 +1722,7 @@ body.ie ._ibg img {
 .block-footer {
   padding: 0 0 20px 0;
   text-align: center;
+  display: block;
 }
 
 .block-footer__column:first-child {
@@ -1818,6 +1827,19 @@ body.ie ._ibg img {
   height: 100%;
   top: 0;
   left: 0;
+}
+
+.mainslider__image::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(75, 122, 122, 0.5);
+  z-index: 1;
 }
 
 .mainslider__dotts {
@@ -2064,15 +2086,30 @@ body.ie ._ibg img {
 .text-block__body {
   padding: 45px 35px 15px 35px;
   background-size: cover;
+  position: relative;
+}
+
+.text-block__body::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(75, 122, 122, 0.7);
 }
 
 .text-block__title {
-  color: #22b7ca;
+  color: #ffffff;
   font-family: "uni";
   font-size: 30px;
   text-transform: uppercase;
   letter-spacing: 0.75px;
   margin: 0 0 28px 0;
+  position: relative;
+  z-index: 1;
 }
 
 .text-block__column {
@@ -2122,8 +2159,8 @@ body.ie ._ibg img {
 
 .text-block__imge {
   position: absolute;
-  right: -90px;
-  bottom: -260px;
+  right: -8px;
+  bottom: -140px;
 }
 
 .filter {
@@ -2299,6 +2336,7 @@ body.ie ._ibg img {
   width: 100%;
   height: 100%;
   z-index: 1;
+  height: 4px;
 }
 
 .price-filter__slider .noUi-origin,
@@ -2324,7 +2362,7 @@ body.ie ._ibg img {
 .price-filter__slider .noUi-handle {
   width: 23px;
   height: 23px;
-  position: relative;
+  position: absolute;
   top: -10px;
   right: -11.5px;
   border: 1px solid #f68038;
@@ -2393,6 +2431,23 @@ body.ie ._ibg img {
   padding: 0px 10px;
   height: 20px;
   color: #999999;
+}
+
+.values-price-filter__input .input input[type="number"] {
+  margin: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  font-size: 0;
+}
+
+.values-price-filter__input .input input[type="number"]:active,
+.values-price-filter__input .input input[type="number"]:hover,
+.values-price-filter__input .input input[type="number"]:focus {
+  margin: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 
 .compare-filter__items {
@@ -3192,6 +3247,43 @@ body.ie ._ibg img {
 
 .form-checkout__text p:last-child {
   margin: 0 0 0px 0;
+}
+
+.form-checkout__checkbox .checkbox__input:checked + .checkbox__text {
+  color: #72c9d4;
+}
+
+.form-checkout__checkbox .checkbox__input:checked + .checkbox__text::before {
+  content: "";
+  position: absolute;
+  border: 2px solid #286664;
+}
+
+.form-checkout__checkbox .checkbox__input:checked + .checkbox__text::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 0px;
+  width: 9px;
+  height: 9px;
+  background-color: #bb1818;
+}
+
+.form-checkout__checkbox .checkbox__text {
+  font-size: 12px;
+  color: #999999;
+  padding: 0 0 0 30px;
+}
+
+.form-checkout__checkbox .checkbox__text::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #e5e5e5;
+  background-color: #fff;
 }
 
 .page {
@@ -4300,11 +4392,19 @@ body.ie ._ibg img {
             flex: 0 1 50%;
   }
 
+  .filter__content {
+    display: block;
+  }
+
   ._no-webp .compare-filter__remove:hover{
     background: url(../img/icons/remove-h.png) 0 0 no-repeat; }
 
   ._no-webp .item-order__delete:hover{
     background: url(../img/icons/remove-h.png) 0 0 no-repeat; }
+
+  .form-checkout__checkbox {
+    cursor: pointer;
+  }
 
   .page__container {
     display: -webkit-box;
@@ -4687,15 +4787,23 @@ body.ie ._ibg img {
     padding: 25px 20px 15px 20px;
   }
 
+  .filter {
+    margin: -20px 0 0 0;
+  }
+
   .filter__title {
     position: relative;
     z-index: 10;
-    padding: 25px 15px 15px 15px;
+    padding: 15px 15px 15px 15px;
   }
 
   .filter__title._active {
-    padding: 25px 15px 5px 15px;
-    color: #940e0e;
+    padding: 15px 15px 5px 15px;
+    color: #bb1818;
+  }
+
+  .filter__content {
+    display: none;
   }
 
   .checkout__order__order {

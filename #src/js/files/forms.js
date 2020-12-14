@@ -45,6 +45,7 @@ async function form_submit(e) {
 		e.preventDefault();
 	}
 }
+
 function form_validate(form) {
 	let error = 0;
 	let form_req = form.querySelectorAll('._req');
@@ -58,6 +59,7 @@ function form_validate(form) {
 	}
 	return error;
 }
+
 function form_validate_input(input) {
 	let error = 0;
 	let input_g_value = input.getAttribute('data-value');
@@ -86,6 +88,7 @@ function form_validate_input(input) {
 	}
 	return error;
 }
+
 function form_add_error(input) {
 	input.classList.add('_error');
 	input.parentElement.classList.add('_error');
@@ -99,6 +102,7 @@ function form_add_error(input) {
 		input.parentElement.insertAdjacentHTML('beforeend', '<div class="form__error">' + input_error_text + '</div>');
 	}
 }
+
 function form_remove_error(input) {
 	input.classList.remove('_error');
 	input.parentElement.classList.remove('_error');
@@ -108,6 +112,7 @@ function form_remove_error(input) {
 		input.parentElement.removeChild(input_error);
 	}
 }
+
 function form_clean(form) {
 	let inputs = form.querySelectorAll('input,textarea');
 	for (let index = 0; index < inputs.length; index++) {
@@ -153,6 +158,7 @@ let selects = document.getElementsByTagName('select');
 if (selects.length > 0) {
 	selects_init();
 }
+
 function selects_init() {
 	for (let index = 0; index < selects.length; index++) {
 		const select = selects[index];
@@ -168,6 +174,7 @@ function selects_init() {
 		}
 	});
 }
+
 function selects_close(e) {
 	const selects = document.querySelectorAll('.select');
 	if (!e.target.closest('.select')) {
@@ -179,6 +186,7 @@ function selects_close(e) {
 		}
 	}
 }
+
 function select_init(select) {
 	const select_parent = select.parentElement;
 	const select_modifikator = select.getAttribute('class');
@@ -192,6 +200,7 @@ function select_init(select) {
 	new_select.appendChild(select);
 	select_item(select);
 }
+
 function select_item(select) {
 	const select_parent = select.parentElement;
 	const select_items = select_parent.querySelector('.select__item');
@@ -219,6 +228,7 @@ function select_item(select) {
 
 	select_actions(select, select_parent);
 }
+
 function select_actions(original, select) {
 	const select_item = select.querySelector('.select__item');
 	const select_body_options = select.querySelector('.select__options');
@@ -268,6 +278,7 @@ function select_actions(original, select) {
 		});
 	}
 }
+
 function select_get_options(select_options) {
 	if (select_options) {
 		let select_options_content = '';
@@ -282,6 +293,7 @@ function select_get_options(select_options) {
 		return select_options_content;
 	}
 }
+
 function select_search(e) {
 	let select_block = e.target.closest('.select ').querySelector('.select__options');
 	let select_options = e.target.closest('.select ').querySelectorAll('.select__option');
@@ -297,6 +309,7 @@ function select_search(e) {
 		}
 	}
 }
+
 function selects_update_all() {
 	let selects = document.querySelectorAll('select');
 	if (selects) {
@@ -396,20 +409,24 @@ function inputs_init(inputs) {
 		}
 	}
 }
+
 function input_placeholder_add(input) {
 	const input_g_value = input.getAttribute('data-value');
 	if (input.value == '' && input_g_value != '') {
 		input.value = input_g_value;
 	}
 }
+
 function input_focus_add(input) {
 	input.classList.add('_focus');
 	input.parentElement.classList.add('_focus');
 }
+
 function input_focus_remove(input) {
 	input.classList.remove('_focus');
 	input.parentElement.classList.remove('_focus');
 }
+
 function input_clear_mask(input, input_g_value) {
 	input.inputmask.remove();
 	input.value = input_g_value;
@@ -436,33 +453,56 @@ if (quantityButtons.length > 0) {
 	}
 }
 
-//RANGE
+//RANGE    //============================================================  ползунок
 const priceSlider = document.querySelector('.price-filter__slider');
 if (priceSlider) {
 	noUiSlider.create(priceSlider, {
-		start: [0, 200000],
+		start: [0, 15000],
 		connect: true,
-		tooltips: [wNumb({ decimals: 0 }), wNumb({ decimals: 0 })],
+		step: 1,
+		tooltips: [wNumb({
+			decimals: 0
+		}), wNumb({
+			decimals: 0
+		})],
 		range: {
 			'min': [0],
-			'max': [200000]
+			'max': [15000]
 		}
 	});
 
 	const priceStart = document.getElementById('price-start');
 	const priceEnd = document.getElementById('price-end');
-	priceStart.addEventListener('change', setPriceValues);
-	priceEnd.addEventListener('change', setPriceValues);
+	const prices = [priceStart, priceEnd];
 
-	function setPriceValues() {
-		let priceStartValue;
-		let priceEndValue;
-		if (priceStart.value != '') {
-			priceStartValue = priceStart.value;
-		}
-		if (priceEnd.value != '') {
-			priceEndValue = priceEnd.value;
-		}
-		priceSlider.noUiSlider.set([priceStartValue, priceEndValue]);
-	}
+	// priceStart.addEventListener('change', setPriceValues);
+	// priceEnd.addEventListener('change',setPriceValues);
+
+	priceSlider.noUiSlider.on('update', function (values, handle) {
+		prices[handle].value = Math.round(values[handle]);
+	});
+
+	const setPriceSlider = (i, value) => {
+let arr = [null, null];
+arr[i] = value;
+
+priceSlider.noUiSlider.set(arr)
+	};
+
+	prices.forEach((el, index) => {
+		el.addEventListener('change', (e) => {
+			setPriceSlider(index, e.currentTarget.value);
+		});
+	});
+	// function setPriceValues() {
+	// 	let priceStartValue;
+	// 	let priceEndValue;
+	// 	if (priceStart.value != '') {
+	// 		priceStartValue = priceStart.value;
+	// 	}
+	// 	if (priceEnd.value != '') {
+	// 		priceEndValue = priceEnd.value;
+	// 	}
+	// 	priceSlider.noUiSlider.set([priceStartValue, priceEndValue]);
+	// }
 }

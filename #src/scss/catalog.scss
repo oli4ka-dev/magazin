@@ -2,6 +2,9 @@
   border: 4px solid #286664;
   background-color: #f9f9f9;
   margin: 0 0 20px 0;
+  @media (max-width: $md2+px) {
+    margin: -20px 0 0 0;
+  }
   &__title {
     padding: 25px 15px 5px 15px;
     color: #286664;
@@ -13,19 +16,19 @@
     @media (max-width: $md2+px) {
       position: relative;
       z-index: 10;
-      padding: 25px 15px 15px 15px;
+      padding: 15px 15px 15px 15px;
       &._active {
-        padding: 25px 15px 5px 15px;
-        color: rgb(148, 14, 14);
+        padding: 15px 15px 5px 15px;
+        color: #bb1818;
       }
     }
   }
   &__content {
     @media (max-width: $md2+px) {
-    //   display: none;
+        display: none;
     }
     @media (min-width: $md2+px) {
-        // display: block;
+      display: block;
     }
   }
   &__body {
@@ -146,22 +149,22 @@
     &::after {
       right: -10px;
     }
- 
+
     .noUi-base,
     .noUi-connects {
       position: relative;
       width: 100%;
       height: 100%;
       z-index: 1;
-    //   height: 4px;
+      height: 4px;
     }
-  
+
     .noUi-origin,
     .noUi-connect {
       will-change: transform;
       position: absolute;
-    //   width: 10%;
-    //   height: 10%;
+      // width: 10%;
+      // height: 10%;
       z-index: 1;
       top: 0;
       right: 0;
@@ -176,7 +179,7 @@
     .noUi-handle {
       width: 23px;
       height: 23px;
-      position: relative;
+      position: absolute;
       top: -10px;
       right: -11.5px;
       border: 1px solid #f68038;
@@ -229,6 +232,18 @@
       padding: 0px 10px;
       height: 20px;
       color: #999999;
+      input[type="number"] {
+        margin: 0;
+        appearance: none;
+        font-size: 0;
+
+        &:active,
+        &:hover,
+        &:focus {
+          margin: 0;
+          appearance: none;
+        }
+      }
     }
   }
 }
@@ -380,8 +395,8 @@
     align-items: center;
     justify-content: space-between;
   }
-  &_top{
-      margin: 0 0 23px 0;
+  &_top {
+    margin: 0 0 23px 0;
   }
   &__show {
   }

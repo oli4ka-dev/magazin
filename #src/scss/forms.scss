@@ -182,11 +182,11 @@ textarea.input {
   position: relative;
   // .checkbox__input
   &__input {
-    // position: absolute;
-    // width: 0;
-    // height: 0;
-    // opacity: 0;
-    // visibility: hidden;
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
   }
   // .checkbox__text
   &__text {
